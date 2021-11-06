@@ -1,24 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {MyPush} from './components/OnOff/OnOff'
+import {Accordion} from "./components/accordion";
+import {Rating} from "./components/Rating";
+import {NewRating, ratingValueTupe} from "./components/NewRating";
+import {NewAccordion} from "./components/Newaccordion";
+
+
 
 function App() {
+
+    const [star, setStart] = useState <ratingValueTupe>(4)
+    const [accor, setAccor] = useState<boolean>(false)
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <MyPush />
+        <Accordion/>
+        <NewRating value={star} clickStar={setStart}/>
+        <NewAccordion value={accor} openaccord={() => setAccor}/>
+        {/*<Rating value={1} />*/}
+
+
     </div>
   );
 }

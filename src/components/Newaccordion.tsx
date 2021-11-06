@@ -1,29 +1,30 @@
 import {useState} from "react";
 
 
-export function Accordion() {
 
-    let [skuk, stetSkuk] = useState(false)
-    const pushAccordion = () => {stetSkuk (!skuk)}
+type PropsNewAccordionType ={
+    value: boolean
+    openaccord: () => void
+}
 
-
-
+export function NewAccordion(props: PropsNewAccordionType) {
 
     return (
         <div>
-            <AccordionTitle push={pushAccordion} />
-            { skuk && <AccordionItem/>}
+            <AccordionTitle push={props.openaccord}  value={true} />
+            { props.value && <AccordionItem/>}
         </div>
     )
 }
 
 type accordionPropsType = {
-    push:  () => void
+    push:  (value:boolean) => void
+    value:true
 }
 
 function AccordionTitle(props:accordionPropsType) {
     return (
-        <h3 onClick={() => {props.push()}}>
+        <h3 onClick={ () =>  props.push(props.value)} >
             User
         </h3>
     )

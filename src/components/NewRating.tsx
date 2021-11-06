@@ -1,25 +1,23 @@
 import {useState} from "react";
 
+export type ratingValueTupe =   1 | 2 | 3 | 4 | 5
+
+
 type valuePropsType ={
-    value:number
+    value: ratingValueTupe
+    clickStar: (value :ratingValueTupe) => void
 }
 
-export function Rating (props: valuePropsType) {
-
-    let [starOn, setStarOn] = useState(0)
-
-   /* const clickStar = ()=> setStarOn(0)*/
-
-
+export function NewRating (props: valuePropsType) {
 
     return (
         <div>
 
-            <Star selected = {starOn > 0}  clickStar={setStarOn}  value ={1} />
-            <Star selected = {starOn > 1}  clickStar={setStarOn}  value ={2} />
-            <Star selected = {starOn > 2}  clickStar={setStarOn}  value ={3} />
-            <Star selected = {starOn > 3}  clickStar={setStarOn}  value ={4} />
-            <Star selected = {starOn > 4}  clickStar={setStarOn}  value ={5} />
+            <Star selected = {props.value > 0}  clickStar={props.clickStar} value={1}/>
+            <Star selected = {props.value > 1}  clickStar={props.clickStar} value={2}/>
+            <Star selected = {props.value > 2}  clickStar={props.clickStar} value={3}/>
+            <Star selected = {props.value > 3}  clickStar={props.clickStar} value={4}/>
+            <Star selected = {props.value > 4}  clickStar={props.clickStar} value={5}/>
 
         </div>
     )
@@ -27,14 +25,15 @@ export function Rating (props: valuePropsType) {
 
 type selectedPropsType ={
     selected: boolean
-    value: 1 | 2 | 3 | 4 | 5
-    clickStar: (value: 1 | 2 | 3 | 4 | 5 )=> void
+    clickStar: (value :ratingValueTupe) => void
+    value: ratingValueTupe
+    /*clickStar: (value: 1 | 2 | 3 | 4 | 5 )=> void*/
 }
 
 function Star(props: selectedPropsType) {
     return(
         <div>
-            <span onClick={() => props.clickStar(props.value)}>
+            <span onClick={()=> {props.clickStar(props.value)} }>
                 {props.selected ?  <b>star</b> : "star"} </span>
         </div>
     )
