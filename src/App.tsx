@@ -6,6 +6,7 @@ import {Accordion} from "./components/accordion";
 import {Rating} from "./components/Rating";
 import {NewRating, ratingValueTupe} from "./components/NewRating";
 import {NewAccordion} from "./components/Newaccordion";
+import {Input, InputRef} from "./components/input";
 
 
 
@@ -22,6 +23,8 @@ function App() {
         <Accordion/>
         <NewRating value={star} clickStar={setStart}/>
         <NewAccordion value={accor} openaccord={() => setAccor}/>
+        <Input/>
+        <InputRef/>
         {/*<Rating value={1} />*/}
 
 
