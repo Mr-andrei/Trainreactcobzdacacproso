@@ -7,29 +7,64 @@ import {Rating} from "./components/Rating";
 import {NewRating, ratingValueTupe} from "./components/NewRating";
 import {NewAccordion} from "./components/Newaccordion";
 import {Input, InputRef} from "./components/input";
+import {Select} from "./components/Select";
 
+
+export type oneCity = {
+    id: number
+    title: string
+}
+type typeOfCountry = Array<oneCity>
 
 
 function App() {
 
-    const [star, setStart] = useState <ratingValueTupe>(4)
+
+
+
+    const [myCountry, setmyCountry] = useState<Array<oneCity>>([
+        {id: 1, title: "Minsk"},
+        {id: 2, title: "Gomel"},
+        {id: 3, title: "Mogelev"},
+        {id: 4, title: "Grodno"},
+        {id: 5, title: "Vitebsk"},
+    ])
+
+    const [valueCountry, setValueCountry] = useState(true)
+
+    const openCountruList =( ) => {
+        setValueCountry(!valueCountry)
+    }
+    const addContry = (title:string) => {
+        let newCountry = {id : 6, title: title}
+        setmyCountry([newCountry, ...myCountry])
+
+    }
+
+
+    const [star, setStart] = useState<ratingValueTupe>(4)
     const [accor, setAccor] = useState<boolean>(false)
 
 
+    return (
+        <div className="App">
+            <MyPush/>
+            <Accordion/>
+            <NewRating value={star} clickStar={setStart}/>
+            <NewAccordion value={accor} openaccord={() => setAccor}/>
+            <Input/>
+            <InputRef/>
+            <Select
+                myData={myCountry}
+                openCountruList={openCountruList}
+                valueCountry={valueCountry}
+                addContry={addContry}
 
-  return (
-    <div className="App">
-        <MyPush />
-        <Accordion/>
-        <NewRating value={star} clickStar={setStart}/>
-        <NewAccordion value={accor} openaccord={() => setAccor}/>
-        <Input/>
-        <InputRef/>
-        {/*<Rating value={1} />*/}
+            />
 
 
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;
