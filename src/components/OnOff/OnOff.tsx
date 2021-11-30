@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useReducer, useState} from "react";
 
 
 type MyPushPropsType = {
@@ -7,7 +7,24 @@ type MyPushPropsType = {
 
  export const MyPush = (props: MyPushPropsType) => {
 
-    let [on, setOn] = useState(false);
+    /*let [on, setOn] = useState(false);*/
+
+    type ActionType = {
+        type:"ON-MODE" | "OFF-MODE"
+    }
+
+    const reducer = (state:boolean,action:ActionType) =>{
+        switch (action.type){
+            case "ON-MODE":
+                return state = true
+            case "OFF-MODE":
+                return state = false
+
+            default: return state
+        }
+    }
+     let [on, dispatch] = useReducer(reducer, false);
+
 
     let buttOn = {
         width: '40px',
@@ -38,8 +55,8 @@ type MyPushPropsType = {
 
     return (
         <div>
-            <button onClick={() => {setOn(true)}} style={buttOn} >push</button>
-            <button onClick={ () => {setOn(false)}} style={buttOff}>push</button>
+            <button onClick={() => {dispatch({type: "ON-MODE"})}} style={buttOn} >push</button>
+            <button onClick={ () => {dispatch({type:"OFF-MODE"})}} style={buttOff}>push</button>
             <div    style={cirkul}></div>
         </div>
     )

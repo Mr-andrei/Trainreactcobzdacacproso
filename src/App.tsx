@@ -30,7 +30,7 @@ function App() {
         {id: 5, title: "Vitebsk"},
     ])
 
-    const [valueCountry, setValueCountry] = useState(true)
+    const [valueCountry, setValueCountry] = useState(false)
 
     const openCountruList =( ) => {
         setValueCountry(!valueCountry)

@@ -12,28 +12,32 @@ type selectPropsType = {
 export const Select = ({myData, openCountruList, valueCountry,addContry}: selectPropsType) => {
 
 
-    let [title, setTitle] = useState("")
+    let [title, setTitle] = useState<string>("")
+
+    let[newTitle, setNewTitle] = useState<string>("")
 
     const onChange = (e:ChangeEvent<HTMLInputElement> ) =>{
         setTitle(e.currentTarget.value)
     }
 
     const addCountry = () => {
+        title &&
         addContry(title)
+        setTitle("")
     }
 
+
     let Data = myData.map(m => {
-        return (
             <div>{m.title}</div>
-        )
+
     })
     return (
         <div>
             <div>Your Country</div>
-            <button onClick={openCountruList}>Your Country</button>
+            <h3 onClick={openCountruList}>{newTitle}</h3>
             {valueCountry ? Data : "" }
             <button onClick={addCountry}>Add Country</button>
-            <input type="text" onChange={onChange}/>
+            <input type="text" onChange={onChange} value={title}/>
 
 
         </div>

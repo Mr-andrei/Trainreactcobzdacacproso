@@ -1,10 +1,24 @@
-import {useState} from "react";
+import {useReducer, useState} from "react";
 
 
 export function Accordion() {
 
-    let [skuk, stetSkuk] = useState(false)
-    const pushAccordion = () => {stetSkuk (!skuk)}
+    //let [skuk, stetSkuk] = useState(false)
+
+    type ActionType ={
+        type: "TOGGEL-STATE"
+    }
+
+     let reducer = (state:boolean, action:ActionType) => {
+        if(action.type === "TOGGEL-STATE" ) {
+            return !state
+        }
+        return state
+     }
+
+    let [skuk, dispatch] = useReducer(reducer, false)
+
+    const pushAccordion = () => {dispatch({type:"TOGGEL-STATE"})}
 
 
 
