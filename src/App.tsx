@@ -23,23 +23,28 @@ function App() {
 
 
     const [myCountry, setmyCountry] = useState<Array<oneCity>>([
-        {id: 1, title: "Minsk"},
+        {id: 2, title: "Minsk"},
         {id: 2, title: "Gomel"},
-        {id: 3, title: "Mogelev"},
-        {id: 4, title: "Grodno"},
-        {id: 5, title: "Vitebsk"},
+        {id: 2, title: "Mogelev"},
+        {id: 1, title: "Kiev"},
+        {id: 1, title: "Lviv"},
+        {id: 1, title: "Odesa"},
+        {id: 3, title: "Moscva"},
+        {id: 3, title: "Piter"},
+        {id: 3, title: "Tymen"},
     ])
 
     const [valueCountry, setValueCountry] = useState(false)
 
-    const openCountruList =( ) => {
+   const openCountruList =( ) => {
         setValueCountry(!valueCountry)
     }
+    /*
     const addContry = (title:string) => {
         let newCountry = {id : 6, title: title}
         setmyCountry([newCountry, ...myCountry])
 
-    }
+    }*/
 
 
     const [star, setStart] = useState<ratingValueTupe>(4)
@@ -56,13 +61,9 @@ function App() {
             <InputRef/>
             <Select
                 myData={myCountry}
-                openCountruList={openCountruList}
                 valueCountry={valueCountry}
-                addContry={addContry}
-
+                openCountruList={openCountruList}
             />
-
-
         </div>
     );
 }
