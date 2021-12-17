@@ -8,6 +8,7 @@ import {NewRating, ratingValueTupe} from "./components/NewRating";
 import {NewAccordion} from "./components/Newaccordion";
 import {Input, InputRef} from "./components/input";
 import Select from "./components/Select";
+import {Visual} from "./MemoReact";
 
 
 
@@ -29,9 +30,9 @@ function App() {
             <NewAccordion value={accor} openaccord={() => setAccor}/>
             <Input/>
             <InputRef/>
-            <Select
-
-            />
+            <Select/>
+            <hr/>
+            <Visual/>
         </div>
     );
 }
