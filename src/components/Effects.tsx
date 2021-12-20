@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 
 export const Example = () => {
 
-
     let [date, setDate] = useState<Date>()
 
     useEffect(()=> {
