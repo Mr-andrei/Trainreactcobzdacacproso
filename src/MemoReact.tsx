@@ -25,8 +25,6 @@ const Users = ({users}:UsersPropsType ) => {
 const UsersMemo = React.memo(Users)
 
 
-
-
 export const Visual = () => {
     let [count, setCount] = useState<number>(0)
     let [users, setUsers] = useState<Array<string>>(["Andrei", "Kiril", "Petro","Katy","ilya"])
