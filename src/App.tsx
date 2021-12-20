@@ -9,6 +9,7 @@ import {NewAccordion} from "./components/Newaccordion";
 import {Input, InputRef} from "./components/input";
 import Select from "./components/Select";
 import {Visual} from "./MemoReact";
+import {Example} from "./components/Effects";
 
 
 
@@ -33,6 +34,7 @@ function App() {
             <Select/>
             <hr/>
             <Visual/>
+            <Example/>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 
 
 export type CounterPropsType = {
@@ -29,12 +29,17 @@ const UsersMemo = React.memo(Users)
 
 export const Visual = () => {
     let [count, setCount] = useState<number>(0)
-    let [users, setUsers] = useState<Array<string>>(["Andrei", "Kiril", "Petro"])
+    let [users, setUsers] = useState<Array<string>>(["Andrei", "Kiril", "Petro","Katy","ilya"])
+
+    const usersUseMem = useMemo(()=> {
+       return users.filter(f => f.toLowerCase().indexOf('a') > -1 )
+    },[users])
+
     return(
         <div>
             <button onClick={()=> setCount(count+1)}>Plus memo</button>
             <Counter count={count}/>
-            <UsersMemo users={users}/>
+            <UsersMemo users={usersUseMem}/>
 
         </div>
     )
